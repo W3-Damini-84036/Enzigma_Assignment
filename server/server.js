@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const morgan = require('morgan')
+const mysql = require('mysql')
 
 
 const connectionString = {host : "localhost", port : 3306,
@@ -27,7 +28,7 @@ app.get("/api/tasks", (request, response)=>
             var resultInString = JSON.stringify(result);
             response.setHeader("content-type", "application/json");
             response.write(resultInString);
-            conncection.end();
+            connection.end();
             response.end();
         }
         else
