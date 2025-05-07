@@ -69,7 +69,7 @@ app.post("/api/task", (request, response)=>{
 
 
 app.put("/api/task/:id", (request, response)=>{
-    let queryText = `update assignment set assigned_to = '${request.body.assigned_to}', status = '${request.body.status}', due_date = '${request.body.due_date}', priority = '${request.body.priority}' comments = '${request.body.comments}', where id = '${request.params.id}';`;
+    let queryText = `update assignment set assigned_to = '${request.body.assigned_to}', status = '${request.body.status}', due_date = '${request.body.due_date}', priority = '${request.body.priority}', comments = '${request.body.comments}' where id = '${request.params.id}'`;
     let connection = mysql.createConnection(connectionString);
     connection.connect();
     connection.query(queryText, (err, result)=> {
@@ -91,7 +91,6 @@ app.put("/api/task/:id", (request, response)=>{
         }
     });
 });
-
 
 app.delete("/api/task/:id", (request, response)=>{
     let queryText = `delete from assignment where id = '${request.params.id}'`;
